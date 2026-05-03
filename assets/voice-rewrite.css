@@ -1,0 +1,98 @@
+/* Additions for first-person voice rewrite */
+
+/* Stat band — 3-column variant */
+.stat-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+@media (max-width: 720px) {
+  .stat-grid-3 { grid-template-columns: 1fr; }
+}
+
+/* Why I built — calmer two-col */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 60px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .why-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* Recent Work cards */
+.rw-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 900px) {
+  .rw-grid { grid-template-columns: 1fr; }
+}
+.rw-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--hairline);
+  padding: 32px 32px 28px;
+  transition: border-color 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+.rw-card:hover {
+  border-color: var(--sunset-orange);
+  transform: translateY(-2px);
+}
+.rw-card-num {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--dark-grey);
+  margin-bottom: 20px;
+}
+.rw-card-title {
+  font-family: var(--font-heading, 'Oswald', sans-serif);
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0 0 16px;
+  color: var(--schad-blue);
+}
+.rw-card-sub {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--dark-grey);
+  margin-bottom: 28px;
+}
+.rw-card-foot {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--sunset-orange);
+}
+.rw-card-foot .arr { margin-left: 4px; }
+.rw-card-empty {
+  background: transparent;
+  border: 1px dashed var(--hairline);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.rw-card-empty:hover { transform: none; border-color: var(--hairline); }
+.rw-card-empty-label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--dark-grey);
+  font-style: italic;
+  margin-top: 24px;
+}
+
+/* Verification centerpiece — more breathing room */
+.verif-centerpiece {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+@media (max-width: 900px) {
+  .verif-centerpiece { padding-top: 80px; padding-bottom: 80px; }
+}

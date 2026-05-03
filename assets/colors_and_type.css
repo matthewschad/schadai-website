@@ -1,0 +1,343 @@
+/* ============================================================
+   SCHAD LAW DESIGN SYSTEM — Colors & Type
+   ============================================================
+   Source: Schad Law Brand Guidelines (July 2025)
+   Contact: www.schadlaw.com
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+/* Display face is CONCOURSE (Matthew Butterick / MB Type).
+   The Schad Law logo + display headlines use Concourse C3 (caps).
+   Concourse T is used for body when a Concourse-native body is desired.
+   Bebas Neue remains loaded as a fallback per the guidelines. */
+
+@font-face {
+  font-family: 'Concourse C3';
+  src: url('fonts/Concourse_C3_Regular.otf') format('opentype'),
+       url('fonts/Concourse_C3_Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse C3';
+  src: url('fonts/Concourse_C3_Bold.otf') format('opentype'),
+       url('fonts/Concourse_C3_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse C6';
+  src: url('fonts/Concourse_C6_Regular.otf') format('opentype'),
+       url('fonts/Concourse_C6_Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse C7';
+  src: url('fonts/Concourse_C7_Regular.otf') format('opentype'),
+       url('fonts/Concourse_C7_Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('fonts/Concourse_T3_Regular.otf') format('opentype'),
+       url('fonts/Concourse_T3_Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('fonts/Concourse_T3_Italic.otf') format('opentype'),
+       url('fonts/Concourse_T3_Italic.ttf') format('truetype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('fonts/Concourse_T3_Bold.otf') format('opentype'),
+       url('fonts/Concourse_T3_Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse T3';
+  src: url('fonts/Concourse_T3_Bold_Italic.otf') format('opentype'),
+       url('fonts/Concourse_T3_Bold_Italic.ttf') format('truetype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse T6';
+  src: url('fonts/Concourse_T6_Regular.otf') format('opentype'),
+       url('fonts/Concourse_T6_Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse T6';
+  src: url('fonts/Concourse_T6_Italic.otf') format('opentype'),
+       url('fonts/Concourse_T6_Italic.ttf') format('truetype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse T7';
+  src: url('fonts/Concourse_T7_Regular.otf') format('opentype'),
+       url('fonts/Concourse_T7_Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Concourse T7';
+  src: url('fonts/Concourse_T7_Italic.otf') format('opentype'),
+       url('fonts/Concourse_T7_Italic.ttf') format('truetype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap');
+
+/* ============================================================
+   BASE TOKENS
+   ============================================================ */
+:root {
+  /* ---------- Primary palette ---------- */
+  --schad-blue: #1D6FB8;          /* signature blue — from the logo */
+  --white: #FFFFFF;
+
+  /* ---------- Secondary palette ---------- */
+  --sky-blue: #8AC6E8;            /* soft blue accent */
+  --navy-steel: #174C6F;          /* deeper blue for contrast / depth */
+  --dark-grey: #5F6B7A;           /* secondary text, muted UI */
+  --light-grey: #AFB6BF;           /* dividers, quiet UI */
+  --grey: #EFEEEA;                 /* warm paper grey — bg wash */
+  --sunset-orange: #E86341;        /* highlight only — use sparingly */
+
+  /* ---------- Extended neutrals (derived, for UI work) ---------- */
+  --ink: #0E1B26;                  /* near-black, warmer than pure black */
+  --ink-soft: #2A3744;
+  --paper: #FAFAF7;                /* slightly warm off-white */
+  --hairline: #D9DCE0;             /* 1px borders, dividers */
+  --overlay: rgba(14, 27, 38, 0.55);
+
+  /* ---------- Semantic color roles ---------- */
+  --fg-1: var(--ink);              /* body / primary text */
+  --fg-2: var(--dark-grey);        /* secondary text */
+  --fg-3: var(--light-grey);       /* tertiary / captions */
+  --fg-inverse: var(--white);
+  --fg-link: var(--schad-blue);
+  --fg-link-hover: var(--navy-steel);
+
+  --bg-1: var(--white);            /* default surface */
+  --bg-2: var(--paper);            /* subtle alt surface */
+  --bg-3: var(--grey);             /* section wash */
+  --bg-brand: var(--schad-blue);   /* blue marketing surface */
+  --bg-navy: var(--navy-steel);    /* deep navy surface */
+  --bg-ink: var(--ink);            /* deepest surface */
+
+  --accent: var(--sunset-orange);  /* highlight — rare, for emphasis */
+  --accent-soft: var(--sky-blue);  /* soft accent */
+
+  --border: var(--hairline);
+  --border-strong: var(--dark-grey);
+
+  /* ---------- Type families ---------- */
+  --font-display: 'Concourse C3', 'Bebas Neue', 'Oswald', 'Arial Narrow', sans-serif;
+  --font-heading: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Lato', 'Concourse T3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* ---------- Type scale (rem = 16px base) ---------- */
+  --step--1: 0.875rem;   /* 14 */
+  --step-0:  1rem;       /* 16 */
+  --step-1:  1.125rem;   /* 18 */
+  --step-2:  1.375rem;   /* 22 */
+  --step-3:  1.75rem;    /* 28 */
+  --step-4:  2.25rem;    /* 36 */
+  --step-5:  3rem;       /* 48 */
+  --step-6:  4rem;       /* 64 */
+  --step-7:  5.5rem;     /* 88 */
+
+  /* ---------- Spacing (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---------- Radii ---------- */
+  /* Brand leans architectural / blocky. Radii stay small. */
+  --radius-0: 0px;       /* logo blocks, buttons, marketing blocks */
+  --radius-1: 2px;       /* inputs, small chips */
+  --radius-2: 4px;       /* cards (subtle) */
+  --radius-3: 8px;       /* modal, larger card */
+  --radius-pill: 999px;  /* status chips only */
+
+  /* ---------- Shadows ---------- */
+  --shadow-1: 0 1px 2px rgba(14, 27, 38, 0.06), 0 1px 1px rgba(14, 27, 38, 0.04);
+  --shadow-2: 0 4px 12px rgba(14, 27, 38, 0.08), 0 1px 2px rgba(14, 27, 38, 0.04);
+  --shadow-3: 0 12px 32px rgba(14, 27, 38, 0.12), 0 2px 6px rgba(14, 27, 38, 0.06);
+  --shadow-inset: inset 0 0 0 1px rgba(14, 27, 38, 0.06);
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.5, 0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --dur-slow: 400ms;
+
+  /* ---------- Layout ---------- */
+  --maxw-prose: 68ch;
+  --maxw-content: 1080px;
+  --maxw-wide: 1280px;
+  --gutter: clamp(16px, 4vw, 48px);
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES
+   ============================================================ */
+
+.t-display,
+h1.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;   /* guideline: letter-spacing 40 (~0.04em) */
+  text-transform: uppercase;
+  color: var(--fg-1);
+}
+
+h1, .t-h1 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--step-5);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--fg-1);
+  margin: 0 0 var(--space-5);
+}
+
+h2, .t-h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--step-4);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--fg-1);
+  margin: 0 0 var(--space-4);
+}
+
+h3, .t-h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: var(--step-3);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--fg-1);
+  margin: 0 0 var(--space-3);
+}
+
+h4, .t-h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--step-2);
+  line-height: 1.25;
+  color: var(--fg-1);
+  margin: 0 0 var(--space-2);
+}
+
+.t-eyebrow {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--schad-blue);
+}
+
+.t-lede {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--step-2);
+  line-height: 1.45;
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+
+p, .t-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+
+.t-body-sm {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  line-height: 1.55;
+  color: var(--fg-2);
+}
+
+.t-quote {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: var(--step-3);
+  line-height: 1.35;
+  color: var(--fg-1);
+}
+
+.t-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+code, .t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+a {
+  color: var(--fg-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur) var(--ease-out);
+}
+a:hover { color: var(--fg-link-hover); }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--space-6) 0;
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+.bg-brand   { background: var(--bg-brand);  color: var(--fg-inverse); }
+.bg-navy    { background: var(--bg-navy);   color: var(--fg-inverse); }
+.bg-ink     { background: var(--bg-ink);    color: var(--fg-inverse); }
+.bg-paper   { background: var(--bg-2); }
+.bg-grey    { background: var(--bg-3); }
+.bg-sky     { background: var(--sky-blue); }
+
+.text-brand   { color: var(--schad-blue); }
+.text-navy    { color: var(--navy-steel); }
+.text-accent  { color: var(--accent); }
+.text-muted   { color: var(--fg-2); }
+
+.stack > * + * { margin-top: var(--space-4); }
+.stack-sm > * + * { margin-top: var(--space-2); }
+.stack-lg > * + * { margin-top: var(--space-6); }
