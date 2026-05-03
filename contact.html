@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Consult — Schad AI</title>
+<meta name="description" content="Tell Matt about your case. A 20-minute consult, a written scope, and a draft in 48 hours.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/contact.css">
+<link rel="stylesheet" href="assets/voice-rewrite.css">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html" aria-label="Schad AI home">
+        <img class="logo-mark" src="assets/logos/SL-BlueOrange.png" alt="">
+        <div class="brand-lock">
+          <span>SCHAD</span>
+          <span class="ai">AI</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Book a Consult</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a class="nav-phone" href="tel:8129454555">812-945-4555</a>
+        <a class="btn btn-accent" href="contact.html">Book a Consult <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="contact-hero">
+  <div class="container">
+    <div class="contact-hero-inner">
+      <span class="eyebrow accent">BOOK A CONSULT</span>
+      <h1 class="h-display" style="margin-top: 20px;">
+        TELL ME ABOUT<br>
+        YOUR <span class="accent">CASE.</span>
+      </h1>
+      <p class="t-lede" style="margin-top: 24px; max-width: 640px;">
+        A 20-minute call. You tell me the motion, the deadline, and the theories
+        you want pushed. I&rsquo;ll tell you the scope, the price, and exactly what
+        lands in your inbox.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORM + ASIDE ===== -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-form-wrap">
+        <div class="mono" style="font-size: 12px; letter-spacing: 0.18em; color: var(--sunset-orange);">INQUIRY FORM · GOES TO MATT</div>
+        <h2 style="font-family: var(--font-display); font-size: clamp(30px, 3.5vw, 44px); letter-spacing: 0.03em; text-transform: uppercase; margin: 14px 0 28px; line-height: 1;">
+          Start a project.
+        </h2>
+
+        <!-- Static-host fallback: form posts via mailto. Replace action with your form endpoint
+             (Formspree, Netlify Forms, etc.) when you wire up a real backend. -->
+        <form id="inquiryForm"
+              class="contact-form"
+              action="mailto:schadlaw@gmail.com"
+              method="POST"
+              enctype="text/plain">
+          <div class="field-row">
+            <label class="field">
+              <span>Your name</span>
+              <input required name="name" placeholder="Jane Doe">
+            </label>
+            <label class="field">
+              <span>Firm</span>
+              <input name="firm" placeholder="Doe &amp; Partners">
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>Email</span>
+              <input required type="email" name="email" placeholder="jane@firm.com">
+            </label>
+            <label class="field">
+              <span>Phone</span>
+              <input name="phone" placeholder="(502) 555-0199">
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>What do you need?</span>
+              <select name="service">
+                <option>MSJ Response</option>
+                <option>Discovery Answers</option>
+                <option>Demand / Mediation</option>
+                <option>Medical Chronology</option>
+                <option>Deposition Summaries</option>
+                <option>Technical Analysis</option>
+                <option>Other motion (in limine, Daubert, strike)</option>
+                <option>Focus group</option>
+                <option>Contingent co-counsel</option>
+                <option>Virtual co-counsel / trial support</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Deadline</span>
+              <input type="date" name="deadline">
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>Preferred consult channel</span>
+              <div class="radio-row">
+                <label class="radio-pill on"><input type="radio" name="channel" value="Zoom" checked>Zoom</label>
+                <label class="radio-pill"><input type="radio" name="channel" value="Teams">Teams</label>
+                <label class="radio-pill"><input type="radio" name="channel" value="Phone">Phone</label>
+              </div>
+            </label>
+          </div>
+          <label class="field">
+            <span>Tell me about the case</span>
+            <textarea rows="5" name="details"
+              placeholder="Motion type, theories you want pushed, file size, anything that matters. No privileged info — save that for the call."></textarea>
+          </label>
+          <div class="field-actions">
+            <button class="btn btn-accent" type="submit">
+              Send inquiry <span class="arr">→</span>
+            </button>
+            <span class="mono" style="font-size: 12px; color: var(--dark-grey); letter-spacing: 0.08em;">
+              Routes directly to schadlaw@gmail.com
+            </span>
+          </div>
+        </form>
+
+        <div id="inquirySent" class="contact-sent" style="display: none;">
+          <div class="mono" style="color: #5BD07A; font-size: 12px; letter-spacing: 0.18em;">● INQUIRY SENT</div>
+          <h3 style="font-family: var(--font-display); font-size: 32px; letter-spacing: 0.03em; text-transform: uppercase; margin: 14px 0 16px;">
+            Thanks, <span id="sentName">counsel</span>.
+          </h3>
+          <p class="t-lede" style="max-width: 520px;">
+            Matt will reach out personally within one business day to schedule your <span id="sentChannel">Zoom</span> consult.
+            If it&rsquo;s urgent, call <a href="tel:8129454555">812-945-4555</a>.
+          </p>
+          <button class="btn btn-secondary" style="margin-top: 24px;" id="sendAnother" type="button">
+            Send another
+          </button>
+        </div>
+      </div>
+
+      <aside class="contact-aside">
+        <div class="contact-card">
+          <div class="mono" style="color: var(--sunset-orange); font-size: 11px; letter-spacing: 0.18em;">DIRECT CONTACT</div>
+          <h4 style="font-family: var(--font-display); font-size: 24px; letter-spacing: 0.03em; text-transform: uppercase; margin: 12px 0 20px;">Matt Schad</h4>
+          <div class="contact-line"><span class="mono">EMAIL</span><a href="mailto:schadlaw@gmail.com">schadlaw@gmail.com</a></div>
+          <div class="contact-line"><span class="mono">PHONE</span><a href="tel:8129454555">812-945-4555</a></div>
+          <div class="contact-line"><span class="mono">OFFICE</span><span>New Albany, Indiana</span></div>
+          <div class="contact-line"><span class="mono">HOURS</span><span>Mon–Fri, 9–5 ET</span></div>
+        </div>
+
+        <div class="contact-card contact-card-dark">
+          <div class="mono" style="color: var(--sunset-orange); font-size: 11px; letter-spacing: 0.18em;">RESPONSE TIMES</div>
+          <div class="resp-row"><span class="mono">Inquiry → reply</span><span class="resp-val">1 business day</span></div>
+          <div class="resp-row"><span class="mono">Consult → scope</span><span class="resp-val">Same week</span></div>
+          <div class="resp-row"><span class="mono">Scope → draft</span><span class="resp-val">48 hours</span></div>
+        </div>
+
+        <div class="contact-card">
+          <div class="mono" style="color: var(--sunset-orange); font-size: 11px; letter-spacing: 0.18em;">WHAT HAPPENS NEXT</div>
+          <ol class="next-list">
+            <li><span>01</span> You send this form or email.</li>
+            <li><span>02</span> Matt replies within one business day.</li>
+            <li><span>03</span> We schedule a 20-minute consult.</li>
+            <li><span>04</span> You get a scope &amp; a price in writing.</li>
+            <li><span>05</span> I ship the draft.</li>
+          </ol>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" style="background: var(--bg-2);">
+  <div class="container">
+    <div style="max-width: 900px; margin-bottom: 48px;">
+      <span class="eyebrow">COMMON QUESTIONS</span>
+      <h2 class="h-xl" style="margin-top: 20px;">THE STUFF<br>EVERYONE ASKS.</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item open">
+        <button class="faq-q" type="button">
+          <span>Do I have to sign up for a subscription?</span>
+          <span class="faq-arrow">−</span>
+        </button>
+        <div class="faq-a"><p>No. This is an à la carte service. You pay per deliverable, or we can engage as contingent co-counsel. No annual commit, no platform fee.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          <span>Can you write in my voice?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a"><p>Yes. Send me a few briefs you&rsquo;ve written, and I&rsquo;ll calibrate length, style, and rhetorical conventions to match. Your readers shouldn&rsquo;t be able to tell.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          <span>What about privilege and confidentiality?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a"><p>We&rsquo;ll set up the right protections before any case material changes hands &mdash; whether that&rsquo;s a formal engagement letter, co-counsel paperwork, or a scoped NDA. I&rsquo;m an attorney; the relationship is covered.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          <span>Will you compete with my firm?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a"><p>No. Schad Law doesn&rsquo;t advertise, doesn&rsquo;t cold-market, and has no interest in poaching your referrals. Schad AI exists to support other plaintiff&rsquo;s firms, not threaten them.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          <span>What cases are you best at?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a"><p>Personal injury and workers&rsquo; comp-adjacent work is my home turf, but the production work &mdash; MSJ responses, discovery, medical analysis, depo summaries &mdash; travels across practice areas.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          <span>Can I learn to do this myself?</span>
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a"><p>Yes, and I&rsquo;m fine with that. This isn&rsquo;t a secret recipe. Some clients use me as an ongoing back-end, others use a few engagements to learn the workflow.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+          <img src="assets/logos/SL-BlueWhite.png" alt="" style="height: 40px;">
+          <div style="font-family: var(--font-display); font-size: 22px; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; font-weight: 700; display: flex; gap: 6px;">
+            <span>SCHAD</span>
+            <span style="color: var(--sunset-orange); border-left: 1.5px solid rgba(255,255,255,0.2); padding-left: 8px;">AI</span>
+          </div>
+        </div>
+        <p style="color: #B8C4CE; font-size: 14px; line-height: 1.6; max-width: 360px; margin: 0;">
+          Attorney-driven, AI-native legal production. A service from Matthew Schad and
+          Schad Law &mdash; serving plaintiff&rsquo;s firms across the country from
+          New Albany, Indiana.
+        </p>
+        <div style="margin-top: 24px; display: flex; gap: 12px;">
+          <a class="btn btn-accent" href="contact.html">Start a project <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html#msj">MSJ Response Drafts</a></li>
+          <li><a href="services.html#discovery">Discovery Answers</a></li>
+          <li><a href="services.html#demands">Demands &amp; Mediation</a></li>
+          <li><a href="services.html#records">Medical Analysis</a></li>
+          <li><a href="services.html#depos">Deposition Summaries</a></li>
+          <li><a href="services.html#focus">Focus Groups</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Engagement</h5>
+        <ul>
+          <li><a href="services.html#pricing">À la carte pricing</a></li>
+          <li><a href="services.html#cocounsel">Contingent co-counsel</a></li>
+          <li><a href="services.html#trial">Virtual co-counsel &amp; trial support</a></li>
+          <li><a href="about.html">About Matt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:8129454555">812-945-4555</a></li>
+          <li><a href="mailto:schadlaw@gmail.com">schadlaw@gmail.com</a></li>
+          <li style="color: #B8C4CE;">New Albany, Indiana</li>
+          <li style="color: #B8C4CE; font-size: 13px; margin-top: 12px;">
+            Schad Law firm site:<br>
+            <a href="https://www.schadlaw.com" style="color: #fff;">www.schadlaw.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Schad Law · Schad AI Services</div>
+      <div style="max-width: 560px; text-align: right; font-style: italic; font-family: var(--font-body); font-weight: 300;">
+        Advertising material. No attorney-client relationship is created by visiting this site
+        or submitting an inquiry form. Results from prior cases do not guarantee similar outcomes.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ toggle
+document.querySelectorAll('.faq-q').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var item = btn.closest('.faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function (el) {
+      el.classList.remove('open');
+      var arr = el.querySelector('.faq-arrow');
+      if (arr) arr.textContent = '+';
+    });
+    if (!wasOpen) {
+      item.classList.add('open');
+      var arr = item.querySelector('.faq-arrow');
+      if (arr) arr.textContent = '−';
+    }
+  });
+});
+
+// Channel pill toggle (visual)
+document.querySelectorAll('.radio-pill input').forEach(function (input) {
+  input.addEventListener('change', function () {
+    document.querySelectorAll('.radio-pill').forEach(function (p) { p.classList.remove('on'); });
+    input.closest('.radio-pill').classList.add('on');
+  });
+});
+
+// Form submit: show "sent" state. mailto: action will also try to open the user's mail client.
+var form = document.getElementById('inquiryForm');
+var sent = document.getElementById('inquirySent');
+var sendAnother = document.getElementById('sendAnother');
+
+form.addEventListener('submit', function (e) {
+  // Let the browser handle the mailto, but also flip to the success state.
+  var name = (form.elements['name'].value || '').split(' ')[0] || 'counsel';
+  var channel = form.elements['channel'].value || 'Zoom';
+  document.getElementById('sentName').textContent = name;
+  document.getElementById('sentChannel').textContent = channel;
+  // Slight delay so the mailto handler fires first.
+  setTimeout(function () {
+    form.style.display = 'none';
+    sent.style.display = 'block';
+  }, 200);
+});
+
+sendAnother.addEventListener('click', function () {
+  form.reset();
+  // restore default channel pill state
+  document.querySelectorAll('.radio-pill').forEach(function (p) { p.classList.remove('on'); });
+  var first = document.querySelector('.radio-pill input[value="Zoom"]');
+  if (first) {
+    first.checked = true;
+    first.closest('.radio-pill').classList.add('on');
+  }
+  sent.style.display = 'none';
+  form.style.display = 'block';
+});
+</script>
+
+</body>
+</html>
