@@ -68,13 +68,18 @@
           Start a project.
         </h2>
 
-        <!-- Static-host fallback: form posts via mailto. Replace action with your form endpoint
-             (Formspree, Netlify Forms, etc.) when you wire up a real backend. -->
+        <!-- Wired to Netlify Forms. Submissions are emailed to Matt and archived
+             in the Netlify dashboard at app.netlify.com/sites/<site>/forms. -->
         <form id="inquiryForm"
               class="contact-form"
-              action="mailto:schadlaw@gmail.com"
+              name="contact"
               method="POST"
-              enctype="text/plain">
+              data-netlify="true"
+              data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hp-field" hidden>
+            <label>Don&rsquo;t fill this out if you&rsquo;re human: <input name="bot-field"></label>
+          </p>
           <div class="field-row">
             <label class="field">
               <span>Your name</span>
@@ -137,7 +142,7 @@
               Send inquiry <span class="arr">→</span>
             </button>
             <span class="mono" style="font-size: 12px; color: var(--dark-grey); letter-spacing: 0.08em;">
-              Routes directly to schadlaw@gmail.com
+              Routes directly to mschad@schadlaw.com
             </span>
           </div>
         </form>
@@ -161,7 +166,7 @@
         <div class="contact-card">
           <div class="mono" style="color: var(--sunset-orange); font-size: 11px; letter-spacing: 0.18em;">DIRECT CONTACT</div>
           <h4 style="font-family: var(--font-display); font-size: 24px; letter-spacing: 0.03em; text-transform: uppercase; margin: 12px 0 20px;">Matt Schad</h4>
-          <div class="contact-line"><span class="mono">EMAIL</span><a href="mailto:schadlaw@gmail.com">schadlaw@gmail.com</a></div>
+          <div class="contact-line"><span class="mono">EMAIL</span><a href="mailto:mschad@schadlaw.com">mschad@schadlaw.com</a></div>
           <div class="contact-line"><span class="mono">PHONE</span><a href="tel:8129454555">812-945-4555</a></div>
           <div class="contact-line"><span class="mono">OFFICE</span><span>New Albany, Indiana</span></div>
           <div class="contact-line"><span class="mono">HOURS</span><span>Mon–Fri, 9–5 ET</span></div>
@@ -298,7 +303,7 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="tel:8129454555">812-945-4555</a></li>
-          <li><a href="mailto:schadlaw@gmail.com">schadlaw@gmail.com</a></li>
+          <li><a href="mailto:mschad@schadlaw.com">mschad@schadlaw.com</a></li>
           <li style="color: #B8C4CE;">New Albany, Indiana</li>
           <li style="color: #B8C4CE; font-size: 13px; margin-top: 12px;">
             Schad Law firm site:<br>
@@ -344,22 +349,45 @@ document.querySelectorAll('.radio-pill input').forEach(function (input) {
   });
 });
 
-// Form submit: show "sent" state. mailto: action will also try to open the user's mail client.
+// Form submit: AJAX-post to Netlify Forms, then show success state ONLY on
+// a real successful submission. Falls back to a clear error if anything fails.
 var form = document.getElementById('inquiryForm');
 var sent = document.getElementById('inquirySent');
 var sendAnother = document.getElementById('sendAnother');
 
 form.addEventListener('submit', function (e) {
-  // Let the browser handle the mailto, but also flip to the success state.
-  var name = (form.elements['name'].value || '').split(' ')[0] || 'counsel';
+  e.preventDefault();
+
+  var firstName = (form.elements['name'].value || '').split(' ')[0] || 'counsel';
   var channel = form.elements['channel'].value || 'Zoom';
-  document.getElementById('sentName').textContent = name;
-  document.getElementById('sentChannel').textContent = channel;
-  // Slight delay so the mailto handler fires first.
-  setTimeout(function () {
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var origLabel = submitBtn ? submitBtn.innerHTML : '';
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending&hellip;';
+  }
+
+  var formData = new FormData(form);
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(function (response) {
+    if (!response.ok) throw new Error('Network response was not ok');
+    document.getElementById('sentName').textContent = firstName;
+    document.getElementById('sentChannel').textContent = channel;
     form.style.display = 'none';
     sent.style.display = 'block';
-  }, 200);
+  })
+  .catch(function () {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = origLabel;
+    }
+    alert('Something went wrong sending the form. Please email mschad@schadlaw.com directly, or call 812-945-4555.');
+  });
 });
 
 sendAnother.addEventListener('click', function () {
